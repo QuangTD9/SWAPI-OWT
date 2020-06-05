@@ -64,6 +64,8 @@ export class VehiclesComponent implements OnInit, OnDestroy {
 
   onChangePage(page) {
     if (page !== this.currPage) {
+      this.disBtnPrev = true;
+      this.disBtnNext = true;
       this.currPage = page;
       this.customerLookup$.next();
     }
