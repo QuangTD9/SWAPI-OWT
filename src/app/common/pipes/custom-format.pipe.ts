@@ -1,16 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 
 @Pipe({
   name: 'customFormat'
 })
 export class CustomFormatPipe implements PipeTransform {
 
+  constructor(private currencyPipe: CurrencyPipe) { }
+
   transform(value: any, ...args: any[]): any {
+
     if (value === 'unknown') {
-      return 0;
+      return '';
     } else {
-      return value;
+      return this.currencyPipe.transform(value);
     }
   }
-
 }

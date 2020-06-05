@@ -11,9 +11,7 @@ import { NgModel, FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./vehicles.component.css']
 })
 export class VehiclesComponent implements OnInit, OnDestroy {
-  @ViewChild('filterName') filterName: NgModel;
-
-  results: [];
+  results = [];
   totalPage;
   currPage = 1;
   next: string;
@@ -54,7 +52,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
         this.results = results['results'];
         this.next = results['next'];
         this.previous = results['previous'];
-        this.totalPage = this.convArr(Math.ceil(results['count'] / 10));
+        this.totalPage = Math.ceil(results['count'] / 10);
         this.disBtnNext = false;
         this.disBtnPrev = false;
       });

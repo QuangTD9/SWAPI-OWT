@@ -1,45 +1,61 @@
-<div class="container" *ngIf="results">
-    <form [formGroup]="formSearch">
-        <input type="search" formControlName="name" class="form-control ds-input" id="search-input"
-            placeholder="Search..." aria-label="Search for..."
-            style="position: relative; width: 200px;margin: 10px 0px;">
-    </form>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">NAME</th>
-                <th scope="col">MODEL</th>
-                <th scope="col">MANUFACTURER</th>
-                <th scope="col">COST CREDITS</th>
-                <th scope="col">MAX SPEED</th>
-                <th scope="col">VEHICLE CLASS</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of results;trackBy: trackByFn">
-                <td>{{item.name}}</td>
-                <td>{{item.model}}</td>
-                <td>{{item.manufacturer}}</td>
-                <td>{{item.cost_in_credits | customFormat}}</td>
-                <td>{{item.max_atmosphering_speed | customFormat}}</td>
-                <td>{{item.vehicle_class}}</td>
-                <td><button type="button" class="btn btn-primary" (click)="onNavigateDetail(item.url)">Detail</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <nav *ngIf="totalPage.length > 1">
-        <ul class="pagination justify-content-center">
-            <li class="page-item" [hidden]="previous === null">
-                <button class="page-link" (click)="onPrevious()" [disabled]="disBtnPrev">Previous</button>
-            </li>
-            <li class="page-item" [class.active]="currPage === i + 1" *ngFor="let page of totalPage; let i = index">
-                <button class="page-link" (click)="onChangePage(i+1)">{{i+1}}</button>
-            </li>
-            <li class="page-item" [hidden]="next === null">
-                <button class="page-link" (click)="onNext()" [disabled]="disBtnNext">Next</button>
-            </li>
-        </ul>
-    </nav>
-</div>
+
+
+<main >
+    <section class="search__categories">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-12">
+                <div class="search__categories--input">
+                    <form [formGroup]="formSearch">
+                        <i class="fas fa-search"></i>
+                        <input type="text" formControlName="name">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row" >
+        <div class="col-md-12 col-lg-12 col-sm-12 ">
+            <h6 style="text-align: right;">{{ results.length }} results</h6>
+        </div>
+    </div>
+    <section class="infomations" *ngIf="results">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 container--info">
+                <div class="card" *ngFor="let item of results;trackBy: trackByFn">
+                    <div class="card--items">
+                        <div class="product--info">
+                            <h1>{{item.name}}</h1>
+                            <h2>{{item.model}} - {{item.manufacturer}}</h2>
+                            <p>{{item.max_atmosphering_speed }}km/h</p>
+                            <p>{{item.cost_in_credits | customFormat}}</p>
+                        </div>
+                    </div>
+                    <div class="card__footer">
+                        <div class="card__footer--right">
+                            <i class="far fa-star"></i>
+                            <h2 (click)="onNavigateDetail(item.url)">Details</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 5px;">
+            <nav *ngIf="totalPage > 1" aria-label="Page navigation example" style="margin: auto;">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" [hidden]="previous === null">
+                        <button class="page-link" (click)="onPrevious()" [disabled]="disBtnPrev">Previous</button>
+                    </li>
+                    <li class="page-item" [class.active]="currPage === i + 1"
+                        *ngFor="let page of convArr(totalPage); let i = index">
+                        <button class="page-link" (click)="onChangePage(i+1)">
+                            {{i+1}}
+                        </button>
+                    </li>
+                    <li class="page-item" [hidden]="next === null">
+                        <button class="page-link" (click)="onNext()" [disabled]="disBtnNext">Next</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+</main>

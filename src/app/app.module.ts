@@ -9,6 +9,7 @@ import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { VehiclesDetailComponent } from './components/vehicle-detail/vehicles-detail.component';
 import { CustomFormatPipe } from './common/pipes/custom-format.pipe';
 import { CustomDatePipe } from './common/pipes/custom-date.pipe';
+import { CurrencyPipe } from '@angular/common';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { CustomDatePipe } from './common/pipes/custom-date.pipe';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

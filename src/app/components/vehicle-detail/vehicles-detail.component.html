@@ -1,100 +1,138 @@
-<div class="container" *ngIf="vehicle">
-    <div class="my-3 p-3 bg-white rounded box-shadow" style="width: 60%;margin: auto;text-align: center;">
-        <h5 class="border-bottom border-gray pb-2 mb-0">Details</h5>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">NAME</strong>
-                <span>{{vehicle.name}}</span>
-            </p>
+<main *ngIf="vehicle">
+    <section class="infomations">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 container--info">
+                <div class="card">
+                    <div class="card--items">
+                        <div class="product--info" style="width: 100%;">
+                            <h1>{{vehicle.name}}</h1>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Name </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.name}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Model </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.model}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Manufacturer </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.manufacturer}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Cost credits </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.cost_in_credits | customFormat}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Length </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.length}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Max speed </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.max_atmosphering_speed}}km/h</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Crew </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.crew}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Passengers </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.passengers}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Cargo capacity </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.cargo_capacity}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Consumables </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.consumables}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Vehicle class </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.vehicle_class}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Pilots </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span *ngFor="let item of vehicle.pilots">{{item}}<br></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Films </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span *ngFor="let item of vehicle.films">{{item}}<br></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Created </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.created | customDate}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-sm-4 ">
+                                    <strong>Edited </strong>
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-8">
+                                    <span>{{vehicle.edited | customDate}}</span>
+                                </div>
+                            </div>
+                            <div class="media text-muted pt-3">
+                                <button type="button" class="btn btn-primary" (click)="onBack()">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">MODEL</strong>
-                <span>{{vehicle.model}}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">MANUFACTURER</strong>
-                <span>{{vehicle.manufacturer}}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">COST CREDITS</strong>
-                <span>{{vehicle.cost_in_credits | customFormat}}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">LENGTH</strong>
-                <span>{{vehicle.length | customFormat }}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">MAX SPEED</strong>
-                <span>{{vehicle.max_atmosphering_speed| customFormat }}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">CREW</strong>
-                <span>{{vehicle.crew | customFormat}}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">PASSENGERS</strong>
-                <span>{{vehicle.passengers | customFormat}}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">CARGO CAPACITY</strong>
-                <span>{{vehicle.cargo_capacity | customFormat}}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">CONSUMABLES</strong>
-                <span>{{vehicle.consumables| customFormat}}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">VEHICLE CLASS</strong>
-                <span>{{vehicle.vehicle_class}}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">PILOTS</strong>
-                <span *ngFor="let pilot of vehicle.pilots">{{pilot}}<br></span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">FILMS</strong>
-                <span *ngFor="let film of vehicle.films">{{film}}<br></span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">CREATED</strong>
-                <span>{{vehicle.created | customDate}}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">EDITED</strong>
-                <span>{{vehicle.edited | customDate}}</span>
-            </p>
-        </div>
-        <div class="media text-muted pt-3">
-            <button type="button" class="btn btn-primary" (click)="onBack()">Back</button>
-        </div>
-
-    </div>
-
-</div>
+    </section>
+</main>
