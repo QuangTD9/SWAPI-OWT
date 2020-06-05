@@ -1,0 +1,45 @@
+<div class="container">
+    <form [formGroup]="formSearch">
+        <input type="search" formControlName="name" class="form-control ds-input" id="search-input"
+            placeholder="Search..." aria-label="Search for..."
+            style="position: relative; width: 200px;margin: 10px 0px;">
+    </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">NAME</th>
+                <th scope="col">MODEL</th>
+                <th scope="col">MANUFACTURER</th>
+                <th scope="col">COST CREDITS</th>
+                <th scope="col">MAX SPEED</th>
+                <th scope="col">VEHICLE CLASS</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of results;trackBy: trackByFn">
+                <td>{{item.name}}</td>
+                <td>{{item.model}}</td>
+                <td>{{item.manufacturer}}</td>
+                <td>{{item.cost_in_credits | customFormat}}</td>
+                <td>{{item.max_atmosphering_speed | customFormat}}</td>
+                <td>{{item.vehicle_class}}</td>
+                <td><button type="button" class="btn btn-primary" (click)="onNavigateDetail(item.url)">Detail</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item" [hidden]="previous == null">
+                <button class="page-link" (click)="onPrevious()">Previous</button>
+            </li>
+            <li class="page-item" [class.active]="currPage == i + 1" *ngFor="let page of totalPage; let i = index">
+                <button class="page-link" (click)="onChangePage(i+1)">{{i+1}}</button>
+            </li>
+            <li class="page-item" [hidden]="next == null">
+                <button class="page-link" (click)="onNext()">Next</button>
+            </li>
+        </ul>
+    </nav>
+</div>
