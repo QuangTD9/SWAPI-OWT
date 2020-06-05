@@ -19,6 +19,8 @@ export class VehiclesComponent implements OnInit, OnDestroy {
   next: string;
   previous: string;
   formSearch: FormGroup;
+  disBtnNext = true;
+  disBtnPrev = true;
 
   private onDestroy$: Subject<boolean> = new Subject<boolean>();
   private customerLookup$: Subject<void> = new Subject();
@@ -53,22 +55,28 @@ export class VehiclesComponent implements OnInit, OnDestroy {
         this.next = results['next'];
         this.previous = results['previous'];
         this.totalPage = this.convArr(Math.ceil(results['count'] / 10));
+        this.disBtnNext = false;
+        this.disBtnPrev = false;
       });
 
     this.customerLookup$.next();
   }
 
   onChangePage(page) {
-    this.currPage = page;
-    this.customerLookup$.next();
+    if (page !== this.currPage) {
+      this.currPage = page;
+      this.customerLookup$.next();
+    }
   }
 
   onPrevious() {
+    this.disBtnPrev = true;
     this.currPage--;
     this.customerLookup$.next();
   }
 
   onNext() {
+    this.disBtnNext = true;
     this.currPage++;
     this.customerLookup$.next();
   }
