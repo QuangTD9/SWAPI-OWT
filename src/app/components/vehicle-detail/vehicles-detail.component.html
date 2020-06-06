@@ -126,8 +126,11 @@
                                     <span>{{vehicle.edited | customDate}}</span>
                                 </div>
                             </div>
-                            <div class="media text-muted pt-3">
-                                <button type="button" class="btn btn-primary" (click)="onBack()">Back</button>
+                            <div class="card__footer">
+                                <div class="card__footer--right">
+                                    <i class="far fa-star"></i>
+                                    <h2 (click)="onBack()">Back</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
